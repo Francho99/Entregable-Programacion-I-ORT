@@ -1,0 +1,143 @@
+<!--Nombres y numeros de estudiantes: -Esteban Blanco-241504 -Franco Choca-342991-->
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/estilos.css">
+        <script src="./js/datosPrueba.js"></script>
+        <script src="./js/clases.js"></script>
+        <script src="./js/funciones.js"></script>
+        <title>Trivia</title>
+    </head>
+    <body>
+        <header class="header">
+         <div>   
+        <img src="./img/LogoTrivia.png" id="logo" class="logo" alt="logo de Trivia">
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li id="generalNavBar" class="nav-item"><a href="#general">Información General</a></li>
+                <li id="gestionNavBar" class="nav-item"><a href="#gestion">Administrar</a></li>
+                <li id="jugarNavBar" class="nav-item"><a href="#jugar">¡Jugar!</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="general" id="general">
+        <h2 class="titulo">DESCRIPCIÓN GENERAL</h2>
+        <h3>¿Que encontraras en este sitio?</h3>
+        <p>En este sitio podrás crear temas, preguntas y jugar a nuestra vesión del conocido juego de Trivia.</p>
+        <p>Es una prueba de conocimiento generales con preguntas y respuestas.</p>
+        <p>Cada tema tiene un nombre y una descripción. Cada pregunta es de un tema, tiene un nivel (1-Muy fácil, ..., 5-muy difícil), un texto que la describe y te aparecerán varias respuestas, pero una sola es la correcta. Si la respondes bien, sumas 10 puntos, por cada error pierdes 1 punto, ¡pero puedes usar la ayuda!.</p>
+        <p>El sitio fue desarrollado en el 1er. semestre 2024 - Programación 1 - Universidad ORT Uruguay por:</p>
+        <div class="alumnos">
+        <img src="./img/EB241504.jpg" class="perfil" alt="foto estudiante 241504">
+        <h5>Esteban Blanco 241504</h5>
+        <img src="./img/IMG_20221217_235925.jpg" class="perfil" alt="foto estudiante 123456">
+        <h5>Franco Choca 342991</h5>
+        </div>
+    </section>
+    <section class="Gestion" id="gestion">
+        <h2 class="titulo2">GESTIÓN DE TEMAS</h2> 
+        <div class="Gestion">
+            <section>
+                <h3>Alta de temas</h3>
+                <form class="AltaTemas" id="idFormularioTema">
+                    <label for="idNombre">Nombre</label>
+                    <input type="text" id="idNombre"  required>
+                    <label for="idDescripcion">Descripción</label>
+                    <input type="text" id="idDescripcion" required>
+                    <input type="button" id="idAgregarTema" value="Agregar" > 
+                </form>
+                <h3>Datos generales de temas</h3>
+                <p>Lista de temas (total de temas :<span id="totalTemas">0</span>)</p>
+                <ul id="Idlista">
+                    <li>Sin datos</li>
+                </ul>
+                <p>Promedio de preguntas por tema (cantidad total de preguntas/cantidad total de temas):<span id="idPromedio">0</span></p>
+                <p>Temas sin preguntas:</p> 
+                <ul id="idLisaTemasSinPreguntas">
+                </ul>
+            </section>
+            <section>
+                <h2 class="titulo2">GESTIÓN DE PREGUNTAS</h2>
+                <h3>Alta de preguntas</h3>
+                <form class="container" id="idFormularioPregunta">
+                    <div>
+                        <label for="idSelecTema" id="idSelector">Tema</label>
+                        <select name="Selecciondetema" id="idSelecTema"></select> 
+                        <label for="idNivel">Nivel</label>
+                        <input type="number" value="1" name="Nivel" id="idNivel" min="1" max="5" required>
+                    </div>
+                    <div>
+                        <label for="idTexto">Texto de la pregunta</label>
+                        <input type="text" name="Textodelapregunta" id="idTexto" required>
+                        <label for="idRespCorrecta">Respuesta Correcta</label>
+                        <input type="text" name="Respuestacorrecta" id="idRespCorrecta" required>
+                        <label for="idRespIncorrecta">Respuestas Incorrectas</label>
+                        <input type="text" name="Respuestasincorrectas" id="idRespIncorrecta" required>
+                        <input type="button" id="idAgregarPregunta" value="Agregar">
+                   </div>
+                </form>
+                <div>
+                    <h3>Datos generales de preguntas</h3>
+                    <p>Total de preguntas registradas:<span id="idTotalPreguntas">0</span></p>
+                    <p>Máximo puntaje obtenido por un jugador: <span id="idResultado"></span></p>
+                    <form id="idChecks">
+                        <label for="checkBox1">Preguntas Registradas</label>
+                        <input id="checkBox1" type="radio" name="ordenar" value="cre" checked>
+                        <label for="checkBox1">Orden nombre tema creciente/nivel creciente</label>
+                        <input id="checkBox2" type="radio" name="ordenar" value="decre">
+                        <label for="checkBox2">Orden nombre tema decreciente/nivel creciente</label>
+                    </form>
+                    <div id="tableContainer">
+                        <table>
+                            <tr id="headerTabla">
+                                <th>Nombre del tema</th>
+                                <th>Nivel</th>
+                                <th>Texto de la pregunta</th>
+                                <th>Respuesta correcta</th>
+                                <th>Respuestas Incorrectas</th>
+                            </tr>
+                            <tbody id="idTablaPreguntas">
+                                
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <section class="jugar" id="jugar">
+        <h2 class="titulo">¡A JUGAR!</h2>
+        <h3>Configuración</h3>
+    <form id="formularioAJugar">
+            <label for="idTemasJugar">Tema a elegir</label>
+            <select id="idTemasJugar" name="idTemasJugar" class="temas"></select>
+            <label for="idNivelJugar">Nivel de juego</label>
+            <input type="number" value="1" max="5" min="1" id="idNivelJugar" name="idNivelJugar" class="nivel" required>
+            <input id="idJugar" type="button" value="Jugar">
+     </form>
+     
+    <div id="idJuego">
+        <h3>Juego</h3>
+        <p>Puntaje acumulado en esta Partida: <span id="idContadorPuntos">0</span></p>
+        <p>La pregunta es...:</p>
+        <div>
+            <h2 id="textoPreg">Aca va el texto de la pregunta</h2>
+            <div id="acaPreguntas"></div>
+        </div>
+        <div id="botonesFuncionalidad" class="botones1">
+            <button class="boton" id="idAyuda">Ayuda</button>
+            <button class="boton" id="idSiguiente">Siguiente Pregunta</button>
+            <button class="boton" id="idterminar">Terminar</button>
+        </div>
+    </div>
+    </section>
+    <audio id="idGanaste"><source src="./audio/acierto.mp3.crdownload"></audio>
+    <audio id="idPerdiste"><source src="./audio/error.mp3.crdownload"></audio>
+    </body>
+</html>
+
